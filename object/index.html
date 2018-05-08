@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/jquery-1.7.2.min.js"></script>
+</head>
+<body>
+	<ul id='food'>
+	    <li><input type="checkbox" value='8'>8元 红豆沙</li>
+	    <li><input type="checkbox" value='5'>5元 青菜肠</li>
+	    <li><input type="checkbox" value='2'>2元 加底</li>
+	    <li><input type="checkbox" value='7'>7元 鸡蛋青菜粥</li>
+	    <li><input type="checkbox" value='6'>6元 白灼鲜蔬菜</li>
+	    <li><input type="checkbox" value='7'>7元 黄金南瓜粥</li>
+	    <li><input type="checkbox" value='3'>3元 卤蛋</li>
+	</ul>
+	<div>
+	    <input type="checkbox" id='all'>
+	    <input type="button" value='全选' id='selectAll'>
+	    <input type="button" value='全不选' id='unselectAll'>
+	    <input type="button" value='反选' id='reverse'>
+	    <input type="button" value='获得选中的值' id='getnum'>
+	</div>
+</body>
+<script>
+    //计算次数，当 #food 7个都选中时，#all 也选中
+    var num =0;
+    //#all 全选框选中时，#food 全部选中
+    $('#all').click(function(){
+        if((this.checked)){
+            $('#food :checkbox').prop('checked',true);
+        }else{
+            $('#food :checkbox').prop('checked',false);
+        }
+    })
+    //全选按钮
+    $('#selectAll').click(function(){
+        $(':checkbox').prop('checked',true);
+        num = 7;
+    })
+    //全不选按钮
+    $('#unselectAll').click(function(){
+        $(':checkbox').prop('checked',false);
+        num = 0;
+    })
+    //反选按钮
+    $('#reverse').click(function(){
+        var arr = [];
+        $('#food :checkbox').each(function(){
+            $(this).prop('checked',!$(this).prop('checked'));
+        })
+        
+        num = arr.length;
+        if(num == 7){
+            $('#all').prop('checked',true);
+        }else{
+            $('#all').prop('checked',false);
+        }
+    })
+    //获取价钱，显示出来
+    $('#getnum').click(function(){
+        getNum();
+    });
+    //全部#food框都选中时，#all 也选中
+    $('#food :checkbox').click(function(){
+        if(this.checked){
+            num++;
+        }else{
+            num--;
+        }
+        if(num == 7){
+            $('#all').prop('checked',true);
+        }else{
+            $('#all').prop('checked',false);
+        }
+    })
+    //计算价钱
+    function getNum(){
+        var sum = 0;
+        var arr = [];
+        $('#food>li>input').each(function(){
+            if(this.checked){
+                //取value值，为字符串，转为数字
+               arr.push(Number($(this).val()));
+            }
+        });
+        console.log(arr);
+        //遍历数组，取合
+        arr.forEach(function(i){
+            sum += i;
+        })
+        alert("总共："+ sum + "元");
+    }
+
+</script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/jquery-1.7.2.min.js"></script>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>国家</th>
+			<th>语言</th>
+			<th>操作</th>
+		</tr>
+		<tr class="one">
+			<td>中国</td>
+			<td>中文</td>
+			<td><a href="#" id="del">删除</a></td>
+		</tr>
+		<tr class="one">
+			<td>美国</td>
+			<td>中文</td>
+			<td><a href="#" id="del">删除</a></td>
+		</tr>
+		<tr class="one">
+			<td>英国</td>
+			<td>中文</td>
+			<td><a href="#" id="del">删除</a></td>
+		</tr>
+	</table>
+</body>
+<script>
+	$(function(){
+		// $('#del').click(function(event) {
+		// 	$('.one').remove();
+		// });
+		$('#del').click(function(event) {
+			$('.one').append('Some text')
+		});
+	});
+</script>
+</html>

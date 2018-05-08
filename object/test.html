@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script>
+			var num = 0;
+		function test(){
+			alert('傻逼');
+			num++;
+			if(num<3){
+				test();
+			}
+			alert('美女与野兽');
+		}
+		// test();
+		       //参数为plus的函数名
+            var s=fn(4,2,plus);
+            //参数为miuns的函数名
+            var n=fn(8,3,miuns);
+           // 弹出s
+            alert(s);
+            //弹出n
+            alert(n);
+            function fn(a,b,fun){
+                //回调
+             var num=fun(a,b);
+                return num;
+            }
+            //一个简单的执行了加法运算的函数
+            function plus(a,b){
+                return a+b;
+            }
+            //一个简单的执行了减法运算的函数
+            function miuns(a,b){
+                return a-b;
+            }
+	</script>
+</head>
+<body>
+	<h1>你好</h1>
+</body>
+</html>
